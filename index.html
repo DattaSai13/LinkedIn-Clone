@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkedin-Clone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      nav {
+        width: 100vw;
+        max-height: 60px;
+        background-color: rgb(217, 243, 234);
+        box-shadow: 0 0 10px gray;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+      .input-group {
+        /* width: 400px; */
+      }
+      .input-group-text {
+        height: 37px;
+        background-color: white;
+      }
+      .right i {
+        font-size: 17px;
+        margin-top: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .ic5{
+        height: 60px;
+        border-right: 2px solid black;
+      }
+      .ic1{
+        height: 60px;
+        border-bottom: 2px solid black;
+      }
+      .main{
+        min-height: 100vh;
+        background-color: antiquewhite;
+        padding-top: 80px;
+      }
+      .leftbox{
+        min-height: 100vh;
+        width: 17vw;
+        /* background-color: yellowgreen; */
+      }
+      .middlebox{
+        min-height: 100vh;
+        width: 35vw;
+        /* background-color: yellowgreen; */
+        margin: 0 20px;
+      }
+      .rightbox{
+        min-height: 100vh;
+        width: 20vw;
+        /* background-color: yellowgreen; */
+      }
+      .left1{
+        width: 100%;
+        /* height: 300px; */
+        background-color: rgb(235, 235, 228);
+        border-radius: 10px;
+        border: 1px solid gray;
+      }
+      .left2{
+        width: 100%;
+        /* height: 90px; */
+        background-color: rgb(235, 235, 228);
+        margin: 10px 0;
+        border-radius: 10px;
+        border: 1px solid gray;
+      }
+      .left3{
+        width: 100%;
+        /* height: 70px; */
+        background-color: rgb(235, 235, 228);
+        margin: 10px 0;
+        border-radius: 10px;
+        border: 1px solid gray;
+      }
+      .left4{
+        width: 100%;
+        /* height: 170px; */
+        background-color: rgb(235, 235, 228);
+        border-radius: 10px;
+        border: 1px solid gray;
+        padding: 20px;
+      }
+      .middle1{
+        width: 100%;
+        /* height: 110px; */
+        background-color: rgb(235, 235, 228);
+        border-radius: 10px;
+        border: 1px solid gray;
+      }
+      .middle2{
+        width: 100%;
+        /* height: 500px; */
+        background-color: rgb(235, 235, 228);
+        margin: 10px 0;
+        border-radius: 10px;
+        border: 1px solid gray;
+      }
+      .right1{
+        width: 100%;
+        /* height: 350px; */
+        background-color: rgb(235, 235, 228);
+        border-radius: 10px;
+        border: 1px solid gray;
+      }
+      .right2{
+        width: 100%;
+        /* height: 200px; */
+        background-color: rgb(235, 235, 228);
+        margin: 10px 0;
+        border-radius: 10px;
+        border: 1px solid gray;
+      }
+      .right3{
+        width: 100%;
+        /* height: 200px; */
+        background-color: rgb(235, 235, 228);
+        margin: 10px 0;
+        border-radius: 10px;
+        border: 1px solid gray;
+        position: sticky;
+        top: 80px;
+      }
+      .p1img{
+        width: 100%;
+        border-radius: 10px;
+      }
+      .p2img{
+        width: 70px;
+        border-radius: 50px;
+        border: 3px solid white;
+        position: relative;
+        left: 20px;
+        bottom: 30px;
+      }
+      .pr2img{
+        width: 70px;
+        border: 3px solid white;
+        position: relative;
+        left: 20px;
+        bottom: 30px;
+      }
+      .ll2:hover{
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .ll3:hover{
+        cursor: pointer;
+          color: rgb(0, 162, 255);
+      }
+      .m2img{
+        width: 60px;
+        border-radius: 50px;
+        border: 2px solid white;
+      }
+      .post{
+        width: 440px;
+        max-height: 40px;
+        border: 2px solid gray;
+        border-radius: 30px;
+        text-align: center;
+        padding: 5px;
+        font-size: large;
+        font-weight: 600;
+      }
+      .m21{
+        height: 30px;
+        width: 100px;
+      }
+      .m23{
+        height: 30px;
+        width: 150px;
+      }
+      .m21:hover{
+        background-color: rgba(128, 128, 128, 0.132);
+      }
+      .m23:hover{
+        background-color: rgba(128, 128, 128, 0.132);
+      }
+      .m1img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        margin: 5px;
+      }
+      .intro{
+           padding:0 10px;
+      }
+      .can1{
+        font-size: 13px;
+        margin-bottom: 0;
+      }
+      .des{
+        font-size: 16px;
+      }
+      .des2{
+          font-size: 15px;
+          color: gray;
+      }
+      .m3img{
+        width: 100%;
+      }
+      .m31:hover{
+        background-color: rgba(128, 128, 128, 0.132);
+      }
+      .in1{
+        background-color: orange;
+        width: 20px;
+        border-radius: 50px;
+      }
+      .tren1{
+        font-size: 14px;
+        /* border: 1px solid black; */
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
+      .tren1:hover{
+          background-color: gray;
+          color: white;
+      }
+      .ict{
+        padding-left: 75px;
+      }
+      @media(max-width:1100px){
+        .rightbox{
+          display: none;
+        }
+        .leftbox{
+          width: 27vw;
+        }
+        .middlebox{
+          width: 45vw;
+        }
+        }
+      @media(max-width:700px){
+        .main{
+           flex-direction: column;
+        }
+        .rightbox{
+          display: none;
+        }
+         .leftbox{
+          display: none;
+         }
+         
+        .middlebox{
+          width: 80vw;
+        }
+      }
+      
+
+    </style>
+  </head>
+  <body>
+    <nav class=" d-flex justify-content-evenly align-items-center">
+      <div class="left d-flex justify-content-center align-items-center">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/018/930/587/non_2x/linkedin-logo-linkedin-icon-transparent-free-png.png"
+          height="60px"
+        />
+        <div
+          class="input-group d-flex flex-wrap justify-content-center align-items-center"
+        >
+          <span class="input-group-text" id="basic-addon1"
+            ><i class="fa-solid fa-magnifying-glass"></i
+          ></span>
+          <input
+            type="text"
+            class="form-control shadow-none"
+            placeholder=" Search"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+      </div>
+      <div class="right d-flex justify-content-center align-items-center gap-4">
+        <div class="ic1 d-flex flex-column justify-content-center align-items-center px-2">
+          <i class="fa-solid fa-house"></i>
+          <p>Home</p>
+        </div>
+        <div class="ic">
+          <i class="fa-solid fa-user-group"></i>
+          <p>My Network</p>
+        </div>
+        <div class="ic">
+          <i class="fa-solid fa-briefcase"></i>
+          <p>Jobs</p>
+        </div>
+        <div class="ic">
+          <i class="fa-solid fa-comment"></i>
+          <p>Messaging</p>
+        </div>
+        <div class="ic5 d-flex flex-column justify-content-center align-items-center px-2">
+          <i class="fa-solid fa-bell"></i>
+          <p>Notifications</p>
+        </div>
+        <div class="ic">
+          <i class="fa-solid fa-grip"></i>
+          <p>For Business</p>
+        </div>
+        <div class="ic">
+          <i class="fa-solid fa-square-check"></i>
+          <p>Try Premium</p>
+        </div>
+      </div>
+    </nav>
+    <!-- section -->
+    <div class="container-fluid main d-flex justify-content-center">
+       <div class="leftbox ">
+        <div class="left1">
+          <img class="p1img" src="p1.png" alt="">
+          <img class="p2img" src="p2.png" alt="">
+          <div class="lefttext d-flex flex-column align-items-start justify-content-center px-3 mb-0">
+            <h6 style="font-size: 20px; margin-bottom: 5px; ">Datta Sai Sandela</h6>
+            <p style="font-size: 14px; margin-bottom: 5px;">NSS Volunteer || Web Development Enthusiast...</p>
+            <p style="font-size: 12px; margin-bottom: 10px;">Hyderabad,Telangana</p>
+          <div class="d-flex gap-2  ">
+            <img class="bg-light" src="snist.png" height="30px">
+            <p style="font-size: 13px; font-weight: 400; ">Sreenidhi Institute of Science and Technology</p>
+          </div>
+          </div>
+
+
+        </div>
+        <div class="left2 d-flex flex-column px-3 gap-1">
+          <div class="ll2 fs-6 d-flex justify-content-between mt-2 ">
+            <p>Profile Viewers :</p>
+            <p class="text-primary">50</p>
+          </div>
+          <div class="ll2 fs-6 d-flex justify-content-between  ">
+            <p >Post Impressions :</p>
+            <p class="text-primary">804</p>
+          </div>
+          
+        </div>
+        <div class="left3 d-flex flex-column px-3">
+          <p class="fs-6 text-secondary mb-0 mt-2">Get hired faster than premium</p>
+          <div class=" d-flex align-items-center ">
+            <i class="mb-3 fa-solid fa-square-check px-1"></i>
+            <p class="ll3">Try for <i class="fa-solid fa-indian-rupee-sign px-1"></i>0</p>
+          </div>
+        </div>
+        <div class="left4 d-flex flex-column justify-content-evenly ">
+          <div class="ll2 d-flex gap-2">
+            <i class="fa-solid fa-bookmark "></i>
+            <p class="fw-bold ">Saved Items</p>
+          </div>
+          <div class="ll2 d-flex gap-2">
+            <i class="fa-solid fa-people-group"></i>
+            <p class="fw-bold">Groups</p>
+          </div>
+          <div class="ll2 d-flex gap-2">
+            <i class="fa-regular fa-newspaper"></i>
+            <p class="fw-bold">Newsletters</p>
+          </div>
+          <div class="ll2 d-flex gap-2">
+            <i class="fa-solid fa-calendar-week"></i>
+            <p class="fw-bold">Events</p>
+          </div>
+          
+        </div>
+       </div>
+       <div class="middlebox">
+         <div class="middle1 d-flex flex-column px-2">
+          <div class="m1 d-flex mt-3">
+               <img class="m2img px-1" src="p2.png" alt="">
+               <button class="post">Start a Post</button>
+          </div>
+          <div class="m2 d-flex justify-content-evenly">
+            <div class=" m21 d-flex ">
+              <i class=" fa-regular fa-image px-2 py-1 text-primary"></i>
+              <p >media</p>
+            </div>
+            <div class="m21 d-flex">
+              <i class="fa-solid fa-calendar-days px-2 py-1 text-warning"></i>
+              <p>Event</p>
+            </div>
+            <div class="m23 d-flex">
+              <i class="fa-regular fa-newspaper px-2 py-1 text-danger"></i>
+              <p>Write Article</p>
+            </div>
+          </div>
+         </div>
+         <div class="border-bottom border-2 border-secondary-subtle mt-3 "></div>
+         <div class="middle2">
+          <div class=" d-flex p-2 ">
+            <img class="m1img " src="m1.png" alt="">
+            <div class="intro d-flex flex-column ">
+              <div class="pro1 d-flex ">
+                <h5>Harsh Vardhan.</h5>
+                <p class="can1">.3rd+</p>
+              </div>
+            <p class="can1">Senior Hardware Engineer | R&D Product Development Special...</p>
+            <p class="can1">9h.<i class="fa-solid fa-earth-americas"></i></p>
+            </div>
+            <i class="fa-solid fa-ellipsis fs-5 px-2"></i>
+            <i class="fa-solid fa-xmark fs-5 px-1 "></i>
+          </div>
+          <div class=" des px-3">This comprehensive Pandas cheatsheet serves as a quick reference guide for data analysts and data scientists working with Python.
+            <p class="des2">more...</p>
+          </div>
+          <img class="m3img" src="m3.png" alt="">
+          <div class="d-flex justify-content-between px-3">
+            <p><i class="fa-regular fa-thumbs-up in1"></i>1012</p>
+            <p>1 comment . 3 Reposts</p>
+          </div>
+          <div class="m2 d-flex justify-content-evenly ">
+            <p class="m31"> <i class="fa-regular fa-thumbs-up px-1 py-2"></i>Like</p>
+            <p class="m31"> <i class="fa-regular fa-comment-dots p-1 py-2"></i>Comment</p>
+            <p class="m31"> <i class="fa-solid fa-repeat p-1 py-2"></i>Repost</p>
+            <p class="m31"> <i class="fa-solid fa-paper-plane p-1 py-2"></i>send</p>
+          </div>
+         </div>
+         <div class="middle2">
+          <div class=" d-flex p-2 ">
+            <img class="m1img " src="https://media.licdn.com/dms/image/v2/C4E03AQE6KFSvddvUcQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1517691226159?e=1746057600&v=beta&t=moXt7v-mguP666jrYkXtxYzj9-U7stE-rUfBioYOYVc" alt="">
+            <div class="intro d-flex flex-column ">
+              <div class="pro1 d-flex ">
+                <h5>Stephen Raj.</h5>
+                <p class="can1">.3rd+</p>
+              </div>
+            <p class="can1">Senior Hardware Engineer | R&D Product Development Special...</p>
+            <p class="can1">9h.<i class="fa-solid fa-earth-americas"></i></p>
+            </div>
+            <i class="fa-solid fa-ellipsis fs-5 px-2"></i>
+            <i class="fa-solid fa-xmark fs-5 px-1 "></i>
+          </div>
+          <div class=" des px-3">This comprehensive Pandas cheatsheet serves as a quick reference guide for data analysts and data scientists working with Python.
+            <p class="des2">more...</p>
+          </div>
+          <video class="m3img" src="video_clip.mp4" autoplay muted></video>
+          <div class="d-flex justify-content-between px-3">
+            <p><i class="fa-regular fa-thumbs-up in1"></i>1012</p>
+            <p>1 comment . 3 Reposts</p>
+          </div>
+          <div class="m2 d-flex justify-content-evenly ">
+            <p class="m31"> <i class="fa-regular fa-thumbs-up px-1 py-2"></i>Like</p>
+            <p class="m31"> <i class="fa-regular fa-comment-dots p-1 py-2"></i>Comment</p>
+            <p class="m31"> <i class="fa-solid fa-repeat p-1 py-2"></i>Repost</p>
+            <p class="m31"> <i class="fa-solid fa-paper-plane p-1 py-2"></i>send</p>
+          </div>
+         </div>
+         <div class="middle2">
+          <div class=" d-flex p-2 ">
+            <img class="m1img " src="https://media.licdn.com/dms/image/v2/C4D0BAQG8u5gP8iAJjA/company-logo_100_100/company-logo_100_100/0/1672313518411?e=1748476800&v=beta&t=GxMxfJ2S7oZ2SomV3LQ6DodWQch05Pb0UUbXm6a_aiU" alt="">
+            <div class="intro d-flex flex-column ">
+              <div class="pro1 d-flex ">
+                <h5>Schon Doorways.</h5>
+                <p class="can1">.3rd+</p>
+              </div>
+            <p class="can1">Become a Schon Dealer & tap into the booming aluminum doors & windows market! Low investment...</p>
+            <p class="can1">9h.<i class="fa-solid fa-earth-americas"></i></p>
+            </div>
+            <i class="fa-solid fa-ellipsis fs-5 px-2"></i>
+            <i class="fa-solid fa-xmark fs-5 px-1 "></i>
+          </div>
+          <div class=" des px-3">This comprehensive Pandas cheatsheet serves as a quick reference guide for data analysts and data scientists working with Python.
+            <p class="des2">more...</p>
+          </div>
+          <img class="m3img" src="https://media.licdn.com/dms/image/v2/D561DAQENv_yuQHZyKw/ssu-carousel-card-shrink_400_400/B56ZUp5urgHsAc-/0/1740164756218?e=1741186800&v=beta&t=TG6ViMKyxOrvhbTrNhCkTzoe1CqqwjBFvzOs7_BSF0g" alt="">
+          <div class="d-flex justify-content-between px-3">
+            <p><i class="fa-regular fa-thumbs-up in1"></i>1012</p>
+            <p>1 comment . 3 Reposts</p>
+          </div>
+          <div class="m2 d-flex justify-content-evenly ">
+            <p class="m31 "> <i class="fa-regular fa-thumbs-up px-1 py-2"></i>Like</p>
+            <p class="m31"> <i class="fa-regular fa-comment-dots p-1 py-2"></i>Comment</p>
+            <p class="m31"> <i class="fa-solid fa-repeat p-1 py-2"></i>Repost</p>
+            <p class="m31"> <i class="fa-solid fa-paper-plane p-1 py-2"></i>send</p>
+          </div>
+         </div>
+         <div class="middle2">
+          <div class=" d-flex p-2 ">
+            <img class="m1img " src="m1.png" alt="">
+            <div class="intro d-flex flex-column ">
+              <div class="pro1 d-flex ">
+                <h5>Harsh Vardhan.</h5>
+                <p class="can1">.3rd+</p>
+              </div>
+            <p class="can1">Senior Hardware Engineer | R&D Product Development Special...</p>
+            <p class="can1">9h.<i class="fa-solid fa-earth-americas"></i></p>
+            </div>
+            <i class="fa-solid fa-ellipsis fs-5 px-2"></i>
+            <i class="fa-solid fa-xmark fs-5 px-1 "></i>
+          </div>
+          <div class=" des px-3">This comprehensive Pandas cheatsheet serves as a quick reference guide for data analysts and data scientists working with Python.
+            <p class="des2">more...</p>
+          </div>
+          <img class="m3img" src="m3.png" alt="">
+          <div class="d-flex justify-content-between px-3">
+            <p><i class="fa-regular fa-thumbs-up in1"></i>1012</p>
+            <p>1 comment . 3 Reposts</p>
+          </div>
+          <div class="m2 d-flex justify-content-evenly ">
+            <p class="m31"> <i class="fa-regular fa-thumbs-up px-1 py-2"></i>Like</p>
+            <p class="m31"> <i class="fa-regular fa-comment-dots p-1 py-2"></i>Comment</p>
+            <p class="m31"> <i class="fa-solid fa-repeat p-1 py-2"></i>Repost</p>
+            <p class="m31"> <i class="fa-solid fa-paper-plane p-1 py-2"></i>send</p>
+          </div>
+         </div>
+      </div>
+       <div class="rightbox">
+        <div class="right1 p-2">
+          <h5 class="px-3">Trending Now</h5>
+          <p>curated by Linkedin News</p>
+            <div class="tren1">
+              <h6 class="t1">EV makers accelerate hiring</h6>
+              <p class="mb-0">7h ago . 5664 readers</p>
+            </div>
+            <div class="tren1">
+              <h6>FMCG stocks take a hit</h6>
+              <p class="mb-0">8h ago . 2450 readers </p>
+            </div>
+           <div class="tren1">
+            <h6>Smartwatches clock decline in sales</h6>
+            <p class="mb-0">9h ago . 1730 readers</p>
+           </div>
+           <div class="tren1">
+            <h6>Smartwatches clock decline in sales</h6>
+            <p class="mb-0">9h ago . 1730 readers</p>
+           </div>
+           <div class="tren1"><h6>Show more<i class="fa-solid fa-chevron-down"></i></h6></div>
+
+        </div>
+        <div class="right2 p-2">
+          <h5>Today's puzzles</h5>
+          <div class="tren1 d-flex">
+            <img src="tango.png" width="40px" height="40px" class="mx-2">
+            <div class=" d-flex ">
+              <div >
+                <h6 class="mb-0 ">Tango</h6>
+                <p class="mb-0">Harmonize the grid</p>
+              </div>
+              <div class="ict"><i class="fa-solid fa-chevron-right fs-4 "></i></div>
+            </div>
+            </div>
+          <div class="tren1 d-flex">
+            <img src="https://static.licdn.com/aero-v1/sc/h/6uvsjtqx2j32uh1a803qygh5y" width="40px" height="40px" class="mx-2">
+            <div class=" d-flex ">
+              <div >
+                <h6 class="mb-0 ">Queens</h6>
+                <p class="mb-0">Crown each region</p>
+              </div>
+              <div class="ict"><i class="fa-solid fa-chevron-right fs-4 "></i></div>
+            </div>
+            </div>
+          <div class="tren1 d-flex">
+            <img src="https://static.licdn.com/aero-v1/sc/h/3zbbe4rnqg4embu5uy17dpiph" width="40px" height="40px" class="mx-2">
+            <div class=" d-flex ">
+              <div >
+                <h6 class="mb-0 ">Pinpoint</h6>
+                <p class="mb-0">Guess the category</p>
+              </div>
+              <div class="ict"><i class="fa-solid fa-chevron-right fs-4 "></i></div>
+            </div>
+            </div>
+          <div class="tren1 d-flex">
+            <img src="https://static.licdn.com/aero-v1/sc/h/8ilyk40nkjoeuzohmqsoc6iiv" width="40px" height="40px" class="mx-2">
+            <div class=" d-flex ">
+              <div >
+                <h6 class="mb-0 ">Crosslimb</h6>
+                <p class="mb-0">Unlock a trivia ladder</p>
+              </div>
+              <div class="ict"><i class="fa-solid fa-chevron-right fs-4 "></i></div>
+            </div>
+            </div>
+        </div>
+        <div class="right3">
+          <img class="p1img" src="p1.png" alt="">
+          <img class="pr2img " src="https://media.licdn.com/dms/image/v2/C4D0BAQFgmRbVKAf1hg/company-logo_100_100/company-logo_100_100/0/1630520314580/baxter_made_in_italy_logo?e=1748476800&v=beta&t=MMIst4yThOPZD-WNpL4dlvU_DjZZK1HgOqACSzdp1Jo" alt="">
+          <div class="lefttext d-flex flex-column align-items-start justify-content-center px-3 mb-0">
+            <h6 style="font-size: 20px; margin-bottom: 0px; ">Intel Baxter</h6>
+            <p style="font-size: 14px; margin-bottom: 5px;">Intel Social Innovation is POWERING GOOD</p>
+            <p style="font-size: 12px; margin-bottom: 10px;">a sustainable future!</p>
+          <div class="d-flex gap-2  ">
+            <img  src="https://media.licdn.com/dms/image/v2/D4E0BAQFpBVw0jiEEAA/company-logo_100_100/company-logo_100_100/0/1697988421716?e=1748476800&v=beta&t=ge1Ewn2lHjR7fnM453ki0WCEzMoyRfky77eK__NXZes" height="30px">
+            <p style="font-size: 13px; font-weight: 400; ">Datta Sai also follows</p>
+          </div>
+          <button type="button" class="btn btn-outline-primary px-5 mx-5 mb-2">Follow</button>
+        </div>
+       </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
